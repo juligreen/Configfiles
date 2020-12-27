@@ -213,7 +213,7 @@ super + alt + 1
 super + alt + 2
 	xclip -sel clip -o | xargs -I _ echo loadfile _ append-play | socat - /tmp/mpvsocket
 super + alt + 3
-	xclip -sel clip -o | xargs youtube-dlc --sub-lang jpn,en --write-auto-sub --write-sub --postprocessor-args '-c:v h264_nvenc' --recode-video mkv --embed-subs --output "~/Videos/youtube/%(title)s-%(id)s.%(ext)s"
+	xclip -sel clip -o | xargs youtube-dlc --sub-lang jpn,en --write-auto-sub --write-sub --postprocessor-args '-c:v h264_nvenc' --merge-output-format mkv --embed-subs --output "~/Videos/youtube/%(title)s-%(id)s.%(ext)s"
 
 XF86Calculator
 	~/Programs/vpnup.sh

@@ -1,4 +1,0 @@
-
-    - name: proprietary media vivaldi
-      command: curl https://launchpadlibrarian.net/414953672/chromium-codecs-ffmpeg-extra_73.0.3683.75-0ubuntu0.16.04.1_amd64.deb | tail -c+1077 | tar JxC ~ --wildcards \*libffmpeg.so --xform 's,.*/,.local/lib/vivaldi/,'
-

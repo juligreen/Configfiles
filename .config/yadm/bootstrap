@@ -7,17 +7,11 @@ git clone https://github.com/kewlfft/ansible-aur.git ~/.ansible/plugins/modules/
 sudo pacman --noconfirm -S ansible
 
 # Execute base install
-ansible-playbook ~/deployment/base-install.yml
+ansible-playbook ~/deployment/playbook_base-install.yml
 
 HOSTNAME=$(hostname)
 
 if [ "$HOSTNAME" = "Cellaris" ]
 then
-	ansible-playbook ~/deployment/home-install.yml
-elif [ "$HOSTNAME" = "Mobilus" ]
-then
-	ansible-playbook ~/deployment/notebook-install.yml
-elif [ "$HOSTNAME" = "workarch" ]
-then
-	ansible-playbook ~/deployment/work-install.yml
+	ansible-playbook ~/deployment/playbook_home-install.yml
 fi

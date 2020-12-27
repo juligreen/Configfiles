@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: true
+  become_user: julius
+
+  tasks:
+    - name: install aur-ansible
+      git:
+        repo: 'https://github.com/kewlfft/ansible-aur.git'
+        dest: '~/.ansible/plugins/modules/aur'
+        clone: yes

@@ -23,12 +23,12 @@ else
   convert ${image} -channel RGB ${image}
 fi
 
-text=$(tesseract -l jpn --psm 13 ${image} ${output} && cat ${output}.txt | sed 's/ //g' | tr -d '\n' | sed 's/.$//')
-echo $text | xclip -selection clipboard
-translated_text=$(trans -brief ja:en $text)
-pronounciation=$(echo $text | iconv -f utf8 -t shift-jis | kakasi -JH -KH -Ea -s | iconv -f shift-jis -t utf8)
+text=$(tesseract -l jpn --psm 13 ${image} ${output} && < ${output}.txt sed 's/ //g' | tr -d '\n' | sed 's/.$//')
+echo "$text" | xclip -selection clipboard
+translated_text=$(trans -brief ja:en "$text")
+pronounciation=$(echo "$text" | iconv -f utf8 -t shift-jis | kakasi -JH -KH -Ea -s | iconv -f shift-jis -t utf8)
 notify-send "$text
 $pronounciation
 $translated_text"
-echo $text | trans -speak -brief ja:en
+echo "$text" | trans -speak -brief ja:en
 

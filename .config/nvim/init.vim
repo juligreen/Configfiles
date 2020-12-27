@@ -55,10 +55,14 @@ Plug 'Chiel92/vim-autoformat' " Add formatting Action
 Plug 'liuchengxu/vim-which-key'
 Plug 'machakann/vim-highlightedyank' " highlight yanked text
 Plug 'junegunn/vim-peekaboo' " preview registers
-Plug 'lpinilla/vim-codepainter' " highlight code
 Plug 'christianrondeau/vim-base64' " Encodes/decodes base64 strings
 Plug 'liuchengxu/vista.vim'
 Plug 'aklt/plantuml-syntax'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'dense-analysis/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'pearofducks/ansible-vim'
 Plug 'tyru/eskk.vim' " Japanese support
 Plug 'tyru/skkdict.vim'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
@@ -106,12 +110,18 @@ set expandtab
 set tabstop=4		" number of visual spaces per TAB
 set shiftwidth=4
 set softtabstop=4	" number of spaces in tab when editing
+
+au BufNewFile,BufRead *.py \
+  set foldmethod=indent
+au BufRead,BufNewFile playbook*.yml set filetype=yaml.ansible
+
+
 " don't fuck with pasting
 set pastetoggle=<C-A-v>
 let g:wordmotion_prefix = '\'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:html_indent_style1 = "inc"
+let g:html_indent_style1 = 'inc'
 set virtualedit=block
 
 vnoremap <C-b> :<c-u>call codepainter#paintText(visualmode())<cr>
@@ -127,6 +137,17 @@ colorscheme monokai
 set termguicolors
 " }}}
 " Plugin Configuration {{{
+" ALE {{{
+let g:airline#extensions#ale#enabled = 1
+let g:ale_disable_lsp = 1
+let g:ale_sign_column_always = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'python': ['add_blank_lines_for_python_control_statements', 'autoimport', 'black', 'isort', 'yapf'],
+\   'java': ['google_java_format']
+\}
+" }}}
 " LeaderF{{{
 let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 1
@@ -139,7 +160,7 @@ let g:LfDiscardEmptyBuffer = 1
 " popup mode
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_StlSeparator = { 'left': '\ue0b0', 'right': '\ue0b2', 'font': 'DejaVu Sans Mono for Powerline' }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 " }}}
 " vim-which-key {{{

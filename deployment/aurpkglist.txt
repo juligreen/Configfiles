@@ -1,5 +1,0 @@
-ocs-url
-polybar
-powerline-fonts-git
-siji-git
-vivaldi

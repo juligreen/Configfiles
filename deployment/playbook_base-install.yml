@@ -54,6 +54,8 @@
           - anki
           - bat
           - dash
+          - yapf
+          - python-isort
           - socat
           - playerctl
           - wmctrl
@@ -64,6 +66,7 @@
           - fd
           - sshfs
           - shellcheck
+          - shfmt
           - rust
           - rust-racer
           - clang
@@ -83,6 +86,7 @@
           - docker
           - feh
           - gnome-system-monitor
+          - prettier
           - kitty
           - htop
           - lsd
@@ -109,18 +113,15 @@
           - zathura-pdf-mupdf
           - ansible
           - cronie
+          - vint
+          - yamllint
+          - ansible-lint
           - hub
           - make
           - unclutter
           - neofetch
       become: true
       become_user: root
-
-    - name: Install zplug
-      become: true
-      become_user: julius
-      shell: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-      ignore_errors: yes
 
     - name: Install yay
       aur:
@@ -130,6 +131,10 @@
     - name: Install aur-packages
       aur:
         name:
+          - dockerfile_lint
+          - google-java-format
+          - gitlint
+          - tflint
           - xkeysnail
           - neovim-git
           - lnav
@@ -145,7 +150,7 @@
           - yadm-git
           - nyrna
           - touchpad-toggle
-          - brave-nightly-bin
+          - brave-bin
 
     - name: Install pip-packages
       pip:
