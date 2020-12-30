@@ -194,6 +194,14 @@ super + shift + F6
 
 super + r
 	jumpapp xournalpp
+button13
+	jumpapp xournalpp
+button11
+	jumpapp anki
+button10
+	xdotool key space
+button12
+	xdotool key 1
 
 super + h
 	jumpapp -f slack
@@ -209,7 +217,7 @@ XF86Launch6
 	jumpapp -f TogglDesktop
 
 super + alt + 1
-	xclip -sel clip -o | xargs mpv --input-ipc-server=/tmp/mpvsocket 
+	xclip -sel clip -o | xargs mpv --input-ipc-server=/tmp/mpvsocket
 super + alt + 2
 	xclip -sel clip -o | xargs -I _ echo loadfile _ append-play | socat - /tmp/mpvsocket
 super + alt + 3
@@ -299,4 +307,3 @@ XF86MonBrightnessUp
 # decrease screen brightness with notification
 XF86MonBrightnessDown
 	sudo light -U 5; notify-send 'brightness down'
-

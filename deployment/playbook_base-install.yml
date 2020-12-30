@@ -46,6 +46,8 @@
           - gopass
           - pandoc
           - elinks
+          - flake8
+          - python-flake8-black
           - nextcloud-client
           - noto-fonts-emoji
           - highlight
