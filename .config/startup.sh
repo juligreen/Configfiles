@@ -4,8 +4,8 @@ unclutter &
 nyrna &
 clipmenud &
 keynav &
-picom --backend xr_glx_hybrid --daemon --shadow --vsync --no-fading-openclose --use-ewmh-active-win --vsync-use-glfinish --unredir-if-possible
-# picom --backend glx --daemon --shadow --vsync --no-fading-openclose --use-ewmh-active-win
+picom --backend xr_glx_hybrid --daemon --shadow --vsync --no-fading-openclose --use-ewmh-active-win --vsync-use-glfinish
+# picom --backend xr_glx_hybrid --daemon --shadow --vsync --no-fading-openclose --use-ewmh-active-win --vsync-use-glfinish --unredir-if-possible
 feh --randomize --bg-fill --no-xinerama ~/Pictures/* &
 ~/Programs/notify-low-battery.sh &
 nextcloud &
@@ -38,8 +38,15 @@ xsetwacom set "Wacom Bamboo 16FG 4x5 Finger touch" Touch off &
 xsetwacom set "Wacom Intuos Pro M Pen stylus"  MapToOutput 1920x1080+0+0 &
 xsetwacom set "Wacom Intuos Pro M Pen eraser"  MapToOutput 1920x1080+0+0 &
 xsetwacom set "Wacom Intuos Pro M Finger touch" Touch off &
+xsetwacom set 'Wacom Intuos Pro M Pad pad' 'AbsWheelUp' 'button 0'
+xsetwacom set 'Wacom Intuos Pro M Pad pad' 'AbsWheelDown' 'button 0'
+xsetwacom set 'Wacom Intuos Pro M Pad pad' 'AbsWheel2Up' 'button 0'
+xsetwacom set 'Wacom Intuos Pro M Pad pad' 'AbsWheel2Down' 'button 0'
+xsetwacom set 'Wacom Intuos Pro M Pad pad' 'RelWheelUp' 'button 0'
+xsetwacom set 'Wacom Intuos Pro M Pad pad' 'RelWheelDown' 'button 0'
 
 xsetwacom set "Wacom Intuos Pro M (WL) Pen stylus"  MapToOutput 1920x1080+0+0 &
 xsetwacom set "Wacom Intuos Pro M (WL) Pen eraser"  MapToOutput 1920x1080+0+0 &
 xsetwacom set "Wacom Intuos Pro M (WL) Finger touch" Touch off &
+# xinput set-float-prop "Wacom Intuos Pro M (WL) Finger touch" "Device Accel Constant Deceleration" 2
 sxhkd &

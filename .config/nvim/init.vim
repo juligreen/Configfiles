@@ -37,16 +37,11 @@ Plug 'chaoren/vim-wordmotion' " camelcasemotion
 Plug 'crusoexia/vim-monokai' " Colorscheme
 Plug 'ku-s-h/summerfruit256.vim'
 Plug 'kana/vim-textobj-user' " Add new textobjects easily
-Plug 'kana/vim-textobj-entire' " textobj: ae entire buffer, ie buffer without leading and trailing empty lines
 Plug 'wellle/targets.vim' " more text objects, enables stuff like ci, or ci/
 Plug 'jeetsukumaran/vim-pythonsense' " Add python text objects: ac (around class), ic, af, if (inner function)
-Plug 'Vimjas/vim-python-pep8-indent' " Manges python indentation
-Plug 'dag/vim-fish' " fish support
 Plug 'paroxayte/vwm.vim' " Manage Window layouts
-Plug 'cespare/vim-toml' " toml support
 Plug 'stephpy/vim-yaml' " yaml support
 Plug 'pechorin/any-jump.nvim' " Use regex to 'go to definition' anywhere (<leader>j)
-Plug 'hashivim/vim-terraform' "terraform syntax highlighting
 Plug 'rbgrouleff/bclose.vim' " Dependency of ranger.vim
 Plug 'francoiscabrol/ranger.vim' " Use ranger inside of vim
 Plug 'unblevable/quick-scope' " Improve f key
@@ -59,8 +54,7 @@ Plug 'aklt/plantuml-syntax'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'dense-analysis/ale'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'pearofducks/ansible-vim'
+Plug 'sheerun/vim-polyglot' " Support for multiple languages
 Plug 'tyru/eskk.vim' " Japanese support
 Plug 'tyru/skkdict.vim'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
@@ -137,14 +131,19 @@ set termguicolors
 " }}}
 " Plugin Configuration {{{
 " ALE {{{
-nmap <leader>i :ALEFix<CR>
+nmap <leader>i :ALEFix<CR>:w<CR>
 let g:airline#extensions#ale#enabled = 1
 let g:ale_disable_lsp = 1
 let g:ale_sign_column_always = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['flake8'],
+\}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
-\   'python': ['black'],
+\   'sh': ['shfmt'],
+\   'python': ['autoimport', 'isort', 'black'],
 \   'java': ['google_java_format']
 \}
 " }}}
@@ -375,7 +374,6 @@ let g:coc_global_extensions = [
 		\'coc-python',
 		\'coc-go',
 		\'coc-sh',
-		\'coc-json',
 		\'coc-css',
 		\'coc-html',
 		\'coc-eslint',

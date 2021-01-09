@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR EDITOR:nvim
-SETUVAR MANPAGER:nvim\x20\x2bMan\x21
+SETUVAR MANPAGER:sh\x20\x2dc\x20\x27col\x20\x2dbx\x20\x7c\x20bat\x20\x2dl\x20man\x20\x2dp\x27
 SETUVAR PAGER:nvim\x20\x2bMAN\x21
 SETUVAR VISUAL:nvim
 SETUVAR __fish_initialized:3100
@@ -23,6 +23,7 @@ SETUVAR _fish_abbr_ssr:ssh\x20raspberry\x20\x2dt\x20byobu
 SETUVAR _fish_abbr_sxhkdrc:nvim\x20\x7e/\x2econfig/sxhkd/sxhkdrc
 SETUVAR _fish_abbr_t:terraform
 SETUVAR _fish_abbr_tg:terragrunt
+SETUVAR _fish_abbr_update:sudo\x20pacman\x20\x2dSy\x20\x26\x26\x20sudo\x20powerpill\x20\x2dSu\x20\x26\x26\x20yay\x20\x2dSu
 SETUVAR _fish_abbr_vim:nvim
 SETUVAR _fish_abbr_vimrc:nvim\x20\x7e/\x2econfig/nvim/init\x2evim
 SETUVAR _fish_abbr_ys:yadm\x20status

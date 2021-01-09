@@ -119,6 +119,8 @@ super + b
 	rofi -show window -monitor -1 -auto-select
 super + shift + i
 	~/Programs/notify-battery.sh
+super + shift + o
+	~/Programs/notify_music_metatda.sh
 super + t
 	~/Programs/notify-time-date.sh
 super + u
@@ -295,11 +297,11 @@ super + F7
 
 # Pulse Audio controls
 XF86AudioRaiseVolume
-	pactl set-sink-volume 0 +5%; pactl set-sink-volume 1 +5%;pactl set-sink-volume 2 +5%; pactl set-sink-volume 3 +5%; pactl set-sink-volume 4 +5%; pactl set-sink-volume 5 +5%; pactl set-sink-volume 6 +5%; pactl set-sink-volume 7 +5%; pactl set-sink-volume 8 +5%; pactl set-sink-volume 9 +5%; pactl set-sink-volume 10 +5%; pactl set-sink-volume 11 +5%; pactl set-sink-volume 12 +5%; pactl set-sink-volume 13 +5%; pactl set-sink-volume 14 +5%; pactl set-sink-volume 15 +5%; pactl set-sink-volume 16 +5%; pactl set-sink-volume 17 +5%; pactl set-sink-volume 18 +5%; pactl set-sink-volume 19 +5%; pactl set-sink-volume 20 +5%; pactl set-sink-volume 21 +5%; pactl set-sink-volume 22 +5%; pactl set-sink-volume 23 +5%; pactl set-sink-volume 24 +5%; pactl set-sink-volume 25 +5%; notify-send 'volume up'
+	pulsemixer --change-volume +5
 XF86AudioLowerVolume
-	pactl set-sink-volume 0 -5%; pactl set-sink-volume 1 -5%; pactl set-sink-volume 2 -5%; pactl set-sink-volume 3 -5%; pactl set-sink-volume 4 -5%; pactl set-sink-volume 5 -5%; pactl set-sink-volume 6 -5%; pactl set-sink-volume 7 -5%; pactl set-sink-volume 8 -5%; pactl set-sink-volume 9 -5%; pactl set-sink-volume 10 -5%; pactl set-sink-volume 11 -5%; pactl set-sink-volume 12 -5%; pactl set-sink-volume 13 -5%; pactl set-sink-volume 14 -5%; pactl set-sink-volume 15 -5%; pactl set-sink-volume 16 -5%; pactl set-sink-volume 17 -5%; pactl set-sink-volume 18 -5%; pactl set-sink-volume 19 -5%; pactl set-sink-volume 20 -5%; pactl set-sink-volume 21 -5%; pactl set-sink-volume 22 -5%; pactl set-sink-volume 23 -5%; pactl set-sink-volume 24 -5%; pactl set-sink-volume 25 -5%; notify-send 'volume down'
+    pulsemixer --change-volume -5
 XF86AudioMute
-	pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle; pactl set-sink-mute 2 toggle; pactl set-sink-mute 3 toggle; pactl set-sink-mute 4 toggle; pactl set-sink-mute 5 toggle; pactl set-sink-mute 6 toggle; pactl set-sink-mute 7 toggle; pactl set-sink-mute 8 toggle; pactl set-sink-mute 9 toggle; pactl set-sink-mute 10 toggle; pactl set-sink-mute 11 toggle; pactl set-sink-mute 12 toggle; pactl set-sink-mute 13 toggle; pactl set-sink-mute 14 toggle; pactl set-sink-mute 15 toggle; pactl set-sink-mute 16 toggle; pactl set-sink-mute 17 toggle; pactl set-sink-mute 18 toggle; pactl set-sink-mute 19 toggle; pactl set-sink-mute 20 toggle; pactl set-sink-mute 21 toggle; pactl set-sink-mute 22 toggle; pactl set-sink-mute 23 toggle; pactl set-sink-mute 24 toggle; pactl set-sink-mute 25 toggle; notify-send 'mute toggle'
+	pulsemixer --toggle-mute
 # Sreen brightness controls
 # increase screen brightness with notification
 XF86MonBrightnessUp

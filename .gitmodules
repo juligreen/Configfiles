@@ -1,9 +1,6 @@
 [submodule ".config/mpv/scripts/subs2srs"]
 	path = .config/mpv/scripts/subs2srs
 	url = https://github.com/Ajatt-Tools/mpvacious.git
-[submodule ".emacs.d"]
-	path = .emacs.d
-	url = https://github.com/hlissner/doom-emacs
 [submodule "Programs/beets-vocadb"]
 	path = Programs/beets-vocadb
 	url = git@github.com:juligreen/beets-vocadb.git
