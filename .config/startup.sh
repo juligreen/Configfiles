@@ -29,8 +29,9 @@ export LS_COLORS
 # rg --files ~/.doom.d/ | entr ~/.emacs.d/bin/doom refresh
 # notify-send (.emacs.d/bin/doom doctor | tail -2 | sed 's/\x1b\[[0-9;]*m//g')
 
-# export ANKI_NOHIGHDPI=1
-# export ANKI_WEBSCALE=1
+/opt/piavpn/bin/piactl background enable
+/opt/piavpn/bin/piactl connect
+
 xsetwacom set "Wacom Bamboo 16FG 4x5 Pen eraser"  MapToOutput 1920x1080+0+0 &
 xsetwacom set "Wacom Bamboo 16FG 4x5 Pen stylus"  MapToOutput 1920x1080+0+0 &
 xsetwacom set "Wacom Bamboo 16FG 4x5 Finger touch" Touch off &

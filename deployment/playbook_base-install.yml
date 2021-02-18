@@ -111,8 +111,7 @@
           - xclip
           - xsel
           - yarn
-          - zathura
-          - zathura-pdf-mupdf
+          - okular
           - ansible
           - cronie
           - vint

@@ -36,9 +36,10 @@ define_keymap(re.compile("Brave-browser|Firefox|Google-chrome"), {
 }, "Firefox and Chrome")
 
 # Emacs-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "Zathura", "kitty", "scrcpy", "moonlight", "Virt-manager", "mpv", "jetbrains-idea-ce", "jetbrains-idea", "Blender"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "Zathura", "kitty", "Alacritty",  "scrcpy", "moonlight", "Virt-manager", "mpv", "jetbrains-idea-ce", "jetbrains-idea", "Blender", "EtG.x86_64"), {
     # Cursor
     K("C-b"): with_mark(K("left")),
+    K("C-M-b"): K("C-b"),
     K("C-f"): with_mark(K("right")),
     K("C-M-f"): K("C-f"),
     K("C-p"): with_mark(K("up")),

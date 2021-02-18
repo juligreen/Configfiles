@@ -13,7 +13,7 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'tpope/vim-obsession' " make sessions smarter => auto save session when closing. Quick info about sessions: https://hackernoon.com/sessions-the-vim-feature-no-one-talks-about-1c9cfa4d52d7
 Plug 'tpope/vim-sleuth' " Autodetect indentation rules
 Plug 'tpope/vim-unimpaired' " quick actions with ]q goes to next entry in quickfix
-Plug 'tpope/vim-commentary' " Comment stuff
+Plug 'b3nj5m1n/kommentary' " Comment stuff
 Plug 'tpope/vim-abolish' " just read the documentation, it's complicated
 Plug 'christoomey/vim-system-copy' " cpit > this copies the content of a tag into your clipboard
 Plug 'vim-airline/vim-airline' " shows buffers for files
@@ -54,9 +54,20 @@ Plug 'aklt/plantuml-syntax'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'dense-analysis/ale'
 Plug 'jiangmiao/auto-pairs'
+Plug 'artur-shaik/vim-javacomplete2'
 Plug 'sheerun/vim-polyglot' " Support for multiple languages
-Plug 'tyru/eskk.vim' " Japanese support
-Plug 'tyru/skkdict.vim'
+Plug 'axvr/org.vim'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'godlygeek/tabular'
+Plug 'kevinhwang91/nvim-bqf'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vim-pandoc/vim-pandoc-after'
+" Plug 'vim-pandoc/vim-markdownfootnotes'
+Plug 'dbridges/vim-markdown-runner'
+Plug 'airblade/vim-rooter'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine. This does loads of stuff, but is a language server client foremost. I will replace it for the native nvim language server, since coc.nvim has a node dependency
 " Stuff to check out {{{
@@ -108,6 +119,9 @@ let mapleader="\<SPACE>"
 au BufNewFile,BufRead *.py set foldmethod=indent
 au BufRead,BufNewFile playbook*.yml set filetype=yaml.ansible
 
+au BufRead,BufNewFile *.java set tabstop=2
+au BufRead,BufNewFile *.java set shiftwidth=2
+au BufRead,BufNewFile *.java set softtabstop=2
 
 " don't fuck with pasting
 set pastetoggle=<C-A-v>
@@ -130,6 +144,13 @@ colorscheme monokai
 set termguicolors
 " }}}
 " Plugin Configuration {{{
+" chadtree{{{
+nnoremap <leader>v <cmd>CHADopen<cr>
+" }}}
+" Pandoc {{{
+let g:pandoc#after#modules#enabled = ["tablemode"]
+
+" }}}
 " ALE {{{
 nmap <leader>i :ALEFix<CR>:w<CR>
 let g:airline#extensions#ale#enabled = 1
@@ -137,17 +158,25 @@ let g:ale_disable_lsp = 1
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'java': ['checkstyle'],
 \   'python': ['flake8'],
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
+\   'yaml': ['prettier'],
 \   'sh': ['shfmt'],
 \   'python': ['autoimport', 'isort', 'black'],
-\   'java': ['google_java_format']
+\   'java': ['uncrustify', 'google_java_format'],
+\   'terraform': ['terraform'],
+\   'hcl': ['terraform'],
+\   'json': ['jq']
 \}
 " }}}
 " LeaderF{{{
+let g:Lf_CommandMap = {'<C-K>': ['<C-P>'], '<C-J>': ['<C-N>'], '<C-P>': ['C-K']}
+
+
 let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 1
 let g:Lf_IgnoreCurrentBufferName = 1
@@ -188,17 +217,6 @@ map gz* <Plug>(asterisk-gz*)
 map z#	<Plug>(asterisk-z#)
 map gz# <Plug>(asterisk-gz#)
 " }}}
-" SKK {{{
-let g:eskk#large_dictionary = {
-\   'path': '/usr/share/skk/SKK-JISYO.L',
-\   'sorted': 1,
-\   'encoding': 'euc-jp',
-\ }
-
-imap <C-k> <Plug>(eskk:toggle)
-cmap <C-k> <Plug>(eskk:toggle)
-lmap <C-k> <Plug>(eskk:toggle)
-" }}}
 " Vista {{{
 let g:vista_default_executive = 'coc'
 " }}}
@@ -230,7 +248,6 @@ set foldlevelstart=10	" open most folds by default
 set foldnestmax=10	" 10 nested fold max
 set foldmethod=indent	" fold based on specified expression
 autocmd FileType vim setlocal foldmethod=marker
-autocmd FileType python setlocal foldmethod=indent
 set foldlevel=0
 set modelines=1
 " }}}
@@ -275,7 +292,7 @@ inoremap <C-H> <C-G>u<BS>
 inoremap <BS> <C-G>u<BS>
 inoremap <CR> <C-]><C-G>u<CR>
 
-nnoremap <Leader>w :w<cr>
+nnoremap <Leader>w :wa<cr>
 
 " Disable Scrolling{{{
 :nmap <ScrollWheelUp> <nop>
@@ -424,8 +441,8 @@ endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.

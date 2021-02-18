@@ -1,6 +1,5 @@
-set -g prefix F12
 unbind-key -n C-a
-
-bind-key C-S-, next-window
-bind-key C-S-. previous-window
-
+unbind-key -n C-z
+set -g prefix ^Z
+set -g prefix2 F12
+bind z send-prefix

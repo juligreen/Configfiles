@@ -112,7 +112,7 @@ super + {Left,Down,Up,Right}
 
 # Basic binds
 super + Return
-	jumpapp kitty
+	jumpapp alacritty
 super + d
 	rofi -show run -monitor -1
 super + b
@@ -132,15 +132,13 @@ super + ctrl + u
 super + ctrl + t
 	touchpad-toggle.sh
 super + g
-	jumpapp okular
+	jumpapp zathura
 XF86Favorites
-	~/Programs/Plexamp.sh
+	~/Programs/tablet.sh
 super + F2
-	~/Programs/Plexamp.sh
+	~/Programs/tablet.sh
 super + a
 	jumpapp anki
-super + v
-	jumpapp -f discord
 super + n
 	jumpapp blender
 super + c
@@ -148,7 +146,7 @@ super + c
 super + e
 	jumpapp emacs
 super + y
-	jumpapp intellij-idea-ultimate-edition
+	jumpapp jetbrains-idea
 super + ctrl + k
 	screenkey --scr 2
 super + shift + Delete
@@ -180,9 +178,9 @@ shift + XF86AudioRaiseVolume
 	playerctl next
 
 ctrl + XF86AudioLowerVolume
-	~/Programs/plexamp_volume_down.sh
+	playerctl volume 0.05-
 ctrl + XF86AudioRaiseVolume
-	~/Programs/plexamp_volume_up.sh
+	playerctl volume 0.05+
 
 super + F12
 	display ~/Documents/kana_layout.svg
@@ -223,16 +221,10 @@ super + alt + 1
 super + alt + 2
 	xclip -sel clip -o | xargs -I _ echo loadfile _ append-play | socat - /tmp/mpvsocket
 super + alt + 3
-	xclip -sel clip -o | xargs youtube-dlc --sub-lang jpn,en --write-auto-sub --write-sub --postprocessor-args '-c:v h264_nvenc' --merge-output-format mkv --embed-subs --output "~/Videos/youtube/%(title)s-%(id)s.%(ext)s"
+	xclip -sel clip -o | xargs youtube-dlc -f 'bv+ba/b' --add-metadata --sub-lang jpn,en --write-auto-sub --write-sub --merge-output-format mkv --embed-subs --output "~/Videos/youtube/%(title)s-%(id)s.%(ext)s"
 
 XF86Calculator
-	~/Programs/vpnup.sh
-shift + XF86Calculator
-	~/Programs/vpndown.sh
-super + Prior
-	~/Programs/vpnup.sh
-super + Next
-	~/Programs/vpndown.sh
+	~/Programs/remove_whitespace.sh
 
 super + ctrl + p
 	gopass ls --flat | rofi -dmenu | xargs --no-run-if-empty gopass show -c
@@ -283,6 +275,9 @@ super + alt + z
 	~/Programs/clip_translate.sh
 super + ctrl + s
 	~/Programs/sanseido_wrapper.sh
+
+XF86Launch5
+    sleep 0.3 && xdotool key dollar w Return
 
 ctrl + super + o
 	clipmenu

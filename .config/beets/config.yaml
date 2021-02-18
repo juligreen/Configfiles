@@ -1,18 +1,12 @@
-# directory: /rclone/Audio/Music
-# library: /rclone/Audio/libraries/musiclibrary_normal.db
 directory: /rclone/Audio/Vocaloid
 library: /rclone/Audio/libraries/musiclibrary.db
-# directory: /rclone/Audio/Japanese_Music
-# library: /rclone/Audio/libraries/japanese_musiclibrary.db
-# directory: /rclone/Audio/OST
-# library: /rclone/Audio/libraries/ost_musiclibrary.db
 import:
     move: yes
 pluginpath:
     - ~/Programs/beets-vocadb/
     - ~/Programs/VGMdb-BeetsPlug/beetsplug
     - ~/Programs/beets-fetchartist/
-plugins: vocadb edit fetchart convert bandcamp
+plugins: edit fetchart convert  vocadb
 edit:
     itemfields: track title artist album albumartist
 paths:

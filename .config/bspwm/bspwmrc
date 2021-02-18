@@ -14,8 +14,6 @@ if [[ $(hostname) == 'Cellaris' ]]; then
 	bspc rule -a plexmediaplayer desktop=^1
 	bspc rule -a Plexamp desktop=^2 state=tiled # rectangle=300x1024+1620+-1
 	bspc rule -a jellyamp desktop=^2 state=tiled
-	bspc rule -a Emacs state=tiled desktop=^1
-	bspc rule -a Steam desktop=^1
 	bspc rule -a Lutris desktop=^1
 	bspc rule -a "Wine" state=tiled desktop=^1
 	bspc rule -a okular desktop=^2
@@ -32,13 +30,13 @@ elif [[ $(hostname) == 'workarch' ]]; then
 	bspc rule -a plexmediaplayer desktop=^1
 	bspc rule -a Plexamp desktop=^1 state=tiled # rectangle=300x1024+1620+-1
 	bspc rule -a jellyamp desktop=^1 state=tiled
-	bspc rule -a Emacs state=tiled desktop=^1
-	bspc rule -a Steam desktop=^1
 	bspc rule -a Lutris desktop=^1
 	bspc rule -a "Wine" state=tiled desktop=^1
 	bspc rule -a okular desktop=^1
 fi
 
+bspc rule -a Steam desktop=^1
+bspc rule -a Emacs state=tiled desktop=^1
 bspc rule -a zoom state=tiled layer=normal
 bspc rule -a pavucontrol-qt state=tiled
 bspc rule -a Screenkey manage=off
@@ -59,5 +57,5 @@ wmname LG3D
 
 
 
-kitty &
+alacritty &
 sudo xkeysnail --watch ~/.config/xkeysnail/config.py 2>&1 | tee /tmp/xkeysnail.log
