@@ -38,28 +38,28 @@ define_keymap(re.compile("Brave-browser|Firefox|Google-chrome"), {
 # Emacs-like keybindings in non-Emacs applications
 define_keymap(lambda wm_class: wm_class not in ("Emacs", "Zathura", "kitty", "Alacritty",  "scrcpy", "moonlight", "Virt-manager", "mpv", "jetbrains-idea-ce", "jetbrains-idea", "Blender", "EtG.x86_64"), {
     # Cursor
-    K("C-b"): with_mark(K("left")),
+    K("C-b"): K("left"),
     K("C-M-b"): K("C-b"),
-    K("C-f"): with_mark(K("right")),
+    K("C-f"): K("right"),
     K("C-M-f"): K("C-f"),
-    K("C-p"): with_mark(K("up")),
-    K("C-n"): with_mark(K("down")),
-    K("C-h"): with_mark(K("backspace")),
+    K("C-p"): K("up"),
+    K("C-n"): K("down"),
+    K("C-h"): K("backspace"),
     # Forward/Backward word
-    K("M-b"): with_mark(K("C-left")),
-    K("M-f"): with_mark(K("C-right")),
+    K("M-b"): K("C-left"),
+    K("M-f"): K("C-right"),
     K("M-Shift-f"): K("M-f"),
     # Beginning/End of line
-    K("C-a"): with_mark(K("home")),
-    K("C-M-a"): with_mark(K("C-a")),
-    K("C-e"): with_mark(K("end")),
+    K("C-a"): K("home"),
+    K("C-M-a"): K("C-a"),
+    K("C-e"): K("end"),
     K("C-M-e"): K("C-e"),
     # Page up/down
     # K("M-v"): with_mark(K("page_up")),
     # K("C-v"): with_mark(K("page_down")),
     # Beginning/End of file
-    K("M-Shift-comma"): with_mark(K("C-home")),
-    K("M-Shift-dot"): with_mark(K("C-end")),
+    K("M-Shift-comma"): with_mark(K("home")),
+    K("M-Shift-dot"): with_mark(K("end")),
     # Newline
     K("C-m"): K("enter"),
     K("C-M-m"): K("C-m"),

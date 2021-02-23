@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-image=~/Documents/ocr.png
+image=~/Documents/ocr.jpg
 output=~/Documents/ocr
 
 sleep 0.3
@@ -23,7 +23,8 @@ else
   convert ${image} -channel RGB ${image}
 fi
 
-text=$(tesseract -l jpn --psm 13 ${image} ${output} && < ${output}.txt sed 's/ //g' | tr -d '\n' | sed 's/.$//')
+text=$(tesseract --psm 5 --oem 1 -l jpn_vert ${image} ${output} && < ${output}.txt sed 's/ //g' | tr -d '\n' | sed 's/.$//')
+# text=$(tesseract -l jpn --psm 13 ${image} ${output} && < ${output}.txt sed 's/ //g' | tr -d '\n' | sed 's/.$//')
 echo "$text" | xclip -selection clipboard
 translated_text=$(trans -brief ja:en "$text")
 pronounciation=$(echo "$text" | iconv -f utf8 -t shift-jis | kakasi -JH -KH -Ea -s | iconv -f shift-jis -t utf8)

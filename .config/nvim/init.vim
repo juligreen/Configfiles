@@ -56,6 +56,7 @@ Plug 'dense-analysis/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'sheerun/vim-polyglot' " Support for multiple languages
+Plug 'tpope/vim-rsi' " emacs-style insert mode mappings
 Plug 'axvr/org.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'godlygeek/tabular'
